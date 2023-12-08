@@ -4,6 +4,7 @@
 ```
     bundle exec jekyll serve
     bundle exec github-pages versions
+    bundle update github-pages 
 ```
 
 # Theme
