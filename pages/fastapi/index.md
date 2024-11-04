@@ -11,6 +11,7 @@ has_children: true
 직관적, 간결함, 배우기 쉬움, 높은 코드 생산성, 운영 환경 구성이 쉬움
 {: .fs-5 .fw-300 }
 
+---
 - Documentation: https://fastapi.tiangolo.com/
 - GitHub: https://github.com/fastapi/fastapi
 {: .fs-3 .fw-600 }
