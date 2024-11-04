@@ -1,6 +1,6 @@
 ---
 layout: default
-title: web security
+title: Web Security
 has_children: true 
 ---
 
