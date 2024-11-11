@@ -87,3 +87,29 @@ sequenceDiagram
 
 ```
 - 위와 다르게 WebSocket의 close handshake는 클라이언트와 서버 중 어느 쪽에서든 시작할 수 있습니다. 양쪽 모두 연결 종료 요청을 할 수 있고, 그에 따라 비슷한 절차로 close handshake가 진행됩니다.
+
+## WebSocket URIs
+WebSocket URIs는 두 가지 URI 스킴으로 정의됩니다:
+- `ws` (일반 WebSocket, 기본 포트는 80)
+- `wss` (보안 WebSocket, 기본 포트는 443)
+
+### URI 형식
+```
+ws-URI  = "ws:"  "//" host [ ":" port ] path [ "?" query ]
+wss-URI = "wss:" "//" host [ ":" port ] path [ "?" query ]
+```
+- `host`: 호스트 이름 (RFC 3986의 Section 3.2.2에서 정의)
+- `port`: 포트 번호 (RFC 3986의 Section 3.2.3에서 정의, 생략 가능)
+- `path`: 경로 (RFC 3986의 Section 3.3에서 정의)
+- `query`: 쿼리 문자열 (RFC 3986의 Section 3.4에서 정의)
+** WebSocket URIs에서는 프래그먼트(fragment identifier) 사용이 금지됩니다.또한, URI에서 "#" 문자는 반드시 "%23" 로 인코딩해야 합니다.
+
+### 예시
+```
+일반 WebSocket: ws://example.com/chat 
+보안 WebSocket: wss://example.com:443/chat?user=namgyo
+
+포트 생략 
+wss://example.com/path (포트 443)
+ws://example.com/path (포트 80)
+```
