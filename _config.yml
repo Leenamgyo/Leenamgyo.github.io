@@ -63,6 +63,11 @@ nav_external_links:
     hide_icon: false # set to true to hide the external link icon - defaults to false
     opens_in_new_tab: true # set to true to open this link in a new tab - defaults to false
 
+mermaid:
+  # Version of mermaid library
+  # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
+  version: "9.1.3"
+  
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
