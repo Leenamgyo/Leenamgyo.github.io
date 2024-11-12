@@ -18,6 +18,39 @@ nav_order: 11
 
 ## 구현 
 
+### Server.py 
+```python
+import asyncio
+import websockets
+
+connected_clients = set()
+
+async def handler(websocket, path):
+    connected_clients.add(websocket)
+    print(f"클라이언트 접속: {websocket.remote_address}")
+    try:
+        async for message in websocket:
+            if message == "/exit":
+                # 클라이언트가 /exit 메시지를 보내면 연결 종료
+                await websocket.close()
+                break
+            for client in connected_clients:
+                if client != websocket:
+                    await client.send(f"{websocket.remote_address}: {message}")
+    finally:
+        connected_clients.remove(websocket)
+        print(f"클라이언트 연결 해제: {websocket.remote_address}")
+
+async def main():
+    async with websockets.serve(handler, "localhost", 8765):
+        print("WebSocket 서버 시작. ws://localhost:8765 에 연결")
+        await asyncio.Future()  # run forever
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+
 ### Client.html
 ```html
 <!DOCTYPE html>
@@ -89,38 +122,6 @@ body {
     </script>
 </body>
 </html>
-```
-
-### Server.py 
-```python
-import asyncio
-import websockets
-
-connected_clients = set()
-
-async def handler(websocket, path):
-    connected_clients.add(websocket)
-    print(f"클라이언트 접속: {websocket.remote_address}")
-    try:
-        async for message in websocket:
-            if message == "/exit":
-                # 클라이언트가 /exit 메시지를 보내면 연결 종료
-                await websocket.close()
-                break
-            for client in connected_clients:
-                if client != websocket:
-                    await client.send(f"{websocket.remote_address}: {message}")
-    finally:
-        connected_clients.remove(websocket)
-        print(f"클라이언트 연결 해제: {websocket.remote_address}")
-
-async def main():
-    async with websockets.serve(handler, "localhost", 8765):
-        print("WebSocket 서버 시작. ws://localhost:8765 에 연결")
-        await asyncio.Future()  # run forever
-
-if __name__ == "__main__":
-    asyncio.run(main())
 ```
 
 ## 실행 
