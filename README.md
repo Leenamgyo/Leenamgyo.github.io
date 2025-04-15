@@ -7,12 +7,6 @@
     bundle update github-pages 
 ```
 
-# nav_order
-```
-
-    RDB 400
-```
-
 
 # Theme
 ```
