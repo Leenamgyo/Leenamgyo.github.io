@@ -10,6 +10,6 @@
 
 # Theme
 ```
-    https://just-the-docs.com/
+    https://just-the-docs.com/ 
 ```
 
