@@ -31,6 +31,9 @@ jobs:
       - name: Build site to public/
         run: |
           hugo --minify
+          
+      - name: Touch .nojekyll
+        run: | 
           touch public/.nojekyll
 
       - name: Upload build artifact (public)
