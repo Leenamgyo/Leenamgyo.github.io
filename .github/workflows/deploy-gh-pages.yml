@@ -1,4 +1,4 @@
-name: Build -> Commit to gh-pages -> Publish
+name: Build -> Test -> Deploy (gh-pages)
 
 on:
   push:
@@ -29,10 +29,9 @@ jobs:
           extended: true
 
       - name: Build site to public/
-        run: hugo --minify
-
-      - name: Disable Jekyll
-        run: touch public/.nojekyll
+        run: |
+          hugo --minify
+          touch public/.nojekyll
 
       - name: Upload build artifact (public)
         uses: actions/upload-artifact@v4
@@ -41,10 +40,37 @@ jobs:
           path: public
           if-no-files-found: error
 
+  test:
+    name: Test (validate build output)
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: read
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: public
+          path: public
+
+      # 최소 검증: 필수 파일 존재 + Jekyll 비활성화 파일 확인
+      - name: Verify public exists
+        run: |
+          test -d public || (echo "❌ public/ directory missing" && exit 1)
+          test -f public/index.html || (echo "❌ public/index.html missing" && exit 1)
+          test -f public/.nojekyll || (echo "❌ public/.nojekyll missing" && exit 1)
+
+      # 선택 검증: 깨진 상대경로(대충) 탐지 - 실패해도 좋으면 exit 0로 바꿔도 됨
+      - name: Quick sanity check (no obvious broken href/src)
+        run: |
+          # 너무 빡세게 잡지 않게, 빈 href/src 같은 흔한 실수만 체크
+          ! grep -R --line-number -E 'href=""|src=""' public >/dev/null \
+            || (echo "❌ Found empty href/src in generated HTML" && exit 1)
+
   deploy:
     name: Deploy (commit public/ into gh-pages)
     runs-on: ubuntu-latest
-    needs: build
+    needs: test
     permissions:
       contents: write
     steps:
@@ -54,7 +80,6 @@ jobs:
           name: public
           path: public
 
-      # gh-pages 브랜치에 public/ "내용"을 루트로 올림
       - name: Commit & Push to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
