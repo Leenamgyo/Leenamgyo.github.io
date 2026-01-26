@@ -1,3 +1,8 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://leenamgyo.github.io/"
+languageCode = "ko-kr"
+title = "Namgyo Docs"
+theme = "book"
+
+[params]
+  BookTheme = "auto"
+  BookSearch = true
