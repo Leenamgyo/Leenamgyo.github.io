@@ -1,44 +1,61 @@
-name: Build and Publish to gh-pages
+name: Build -> Commit to gh-pages -> Publish
 
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 concurrency:
   group: "gh-pages"
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
+    name: Build (generate public/)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      # Step 0) 소스 체크아웃
-      - name: Checkout source (main)
+      - name: Checkout (main)
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
 
-      # Step 1) Hugo 빌드
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "0.125.7"
           extended: true
 
-      - name: Build site (public/)
+      - name: Build site to public/
         run: hugo --minify
 
-      # Step 2) gh-pages에 올릴 결과물 준비 (Jekyll 비활성)
       - name: Disable Jekyll
         run: touch public/.nojekyll
 
-      # Step 3) public/ 내용을 gh-pages 브랜치 루트로 배포
-      - name: Deploy public/ to gh-pages
+      - name: Upload build artifact (public)
+        uses: actions/upload-artifact@v4
+        with:
+          name: public
+          path: public
+          if-no-files-found: error
+
+  deploy:
+    name: Deploy (commit public/ into gh-pages)
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: public
+          path: public
+
+      # gh-pages 브랜치에 public/ "내용"을 루트로 올림
+      - name: Commit & Push to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
