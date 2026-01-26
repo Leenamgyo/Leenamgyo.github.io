@@ -1,8 +1,15 @@
 baseURL = "https://leenamgyo.github.io/"
 languageCode = "ko-kr"
-title = "Namgyo Docs"
+title = "Namgyo Wiki"
 theme = "book"
 
 [params]
-  BookTheme = "auto"
+  BookTheme = "auto"      # light / dark / auto
+  BookToC = true          # 우측 TOC
+  BookSection = "docs"    # docs 폴더를 위키 루트로
   BookSearch = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
