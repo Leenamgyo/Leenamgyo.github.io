@@ -1,14 +1,18 @@
 baseURL: "https://leenamgyo.github.io/"
 languageCode: "ko-kr"
-title: "Namgyo Wiki"
+title: "Namgyo Lee"
 theme: "PaperMod"
 
 enableRobotsTXT: true
 
 params:
   homeInfoParams:
-    Title: "Hi there wave"
-    Content: "Can be Info, links, about..."
+    Title: "Wiki"
+    Content: >
+      이 위키는 개발 과정에서의 고민과 설계 의도, 기술적인 정리를 기록하기 위한 공간입니다.
+      
+      
+      코드보다 맥락을, 결과보다 과정을 남기는 것을 목표로 합니다.
 
   env: "production"
   defaultTheme: "auto"
@@ -19,6 +23,12 @@ params:
   ShowSummary: true
   mainSections:
     - posts
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/Leenamgyo"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/your-linkedin-id/"
 
 menu:
   main:
