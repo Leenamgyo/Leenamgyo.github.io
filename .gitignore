@@ -1,4 +1,6 @@
 
 /public/
 
-**/.obsidian/
+public/
+resources/
+.obsidian
