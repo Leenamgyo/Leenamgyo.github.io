@@ -1,0 +1,39 @@
+baseURL: "https://leenamgyo.github.io/"
+languageCode: "ko-kr"
+title: "Namgyo Wiki"
+theme: "PaperMod"
+
+enableRobotsTXT: true
+
+params:
+  homeInfoParams:
+    Title: "Hi there wave"
+    Content: "Can be Info, links, about..."
+
+  env: "production"
+  defaultTheme: "auto"
+  ShowReadingTime: true
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowSummary: true
+  mainSections:
+    - docs
+
+menu:
+  main:
+    - name: "Archive"
+      url: "/archives/"
+      weight: 1
+    - name: "Search"
+      url: "/search/"
+      weight: 2
+    - name: "Tags"
+      url: "/tags/"
+      weight: 3
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
