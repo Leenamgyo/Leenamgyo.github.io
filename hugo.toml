@@ -1,15 +1,32 @@
 baseURL = "https://leenamgyo.github.io/"
 languageCode = "ko-kr"
 title = "Namgyo Wiki"
-theme = "book"
+theme = "PaperMod"
+
+enableRobotsTXT = true
 
 [params]
-  BookTheme = "auto"      # light / dark / auto
-  BookToC = true          # 우측 TOC
-  BookSection = "docs"    # docs 폴더를 위키 루트로
-  BookSearch = true
+  env = "production"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowSummary = true
+  mainSections = ["docs"]
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+[menu]
+  [[menu.main]]
+    name = "Archive"
+    url = "/archives/"
+    weight = 1
+  # [[menu.main]]
+  #   name = "Search"
+  #   url = "/search/"
+  #   weight = 2
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+  
+  
