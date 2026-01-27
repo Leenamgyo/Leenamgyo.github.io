@@ -18,7 +18,7 @@ params:
   ShowCodeCopyButtons: true
   ShowSummary: true
   mainSections:
-    - docs
+    - posts
 
 menu:
   main:

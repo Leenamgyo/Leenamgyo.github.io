@@ -1,7 +1,6 @@
 ---
 title: "{{VALUE}}"
-date: "{{DATE:YYYY-MM-DD HH:mm:ss}}"
+date: "{{DATE:YYYY-MM-DD}}"
 draft: false
 tags: []
 ---
-# {{VALUE}}
