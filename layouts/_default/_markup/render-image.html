@@ -1,9 +1,14 @@
 {{- $dest := .Destination -}}
 
-{{/* 1. 경로가 ../static 으로 시작하는지 확인 */}}
-{{- if strings.HasPrefix $dest "../static" -}}
-  {{/* 2. ../static을 제거하고 루트(/) 경로로 변경 */}}
-  {{- $dest = strings.TrimPrefix "../static" $dest -}}
-{{- end -}}
+{{/* 정규표현식 패턴 정의 */}}
+{{/* ^ : 문자열의 시작 */}}
+{{/* (\.\./)+ : '../' 문자열이 1번 이상 반복됨 */}}
+{{/* static/ : 그 뒤에 'static/'이 이어짐 */}}
+{{- $pattern := `^(\.\./)+static/` -}}
+
+{{/* 위 패턴에 해당하는 부분을 찾아서 '/'로 치환합니다. */}}
+{{/* 예시 1: "../static/img.png" -> "/img.png" */}}
+{{/* 예시 2: "../../static/images/photo.jpg" -> "/images/photo.jpg" */}}
+{{- $dest = replaceRE $pattern "/" $dest -}}
 
 <img src="{{ $dest | safeURL }}" alt="{{ .Text }}" {{ with .Title }} title="{{ . }}" {{ end }} />
