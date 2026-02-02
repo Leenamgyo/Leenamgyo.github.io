@@ -3,26 +3,62 @@
 This file contains context and instructions for the Gemini CLI agent working on this project.
 
 ## Project Overview
-- **Name**: blog
+- **Name**: blog (Stack Theme Port)
 - **Type**: SvelteKit Application
 - **Language**: TypeScript
-- **Style**: Svelte (likely Tailwind or CSS in JS in future)
+- **Style**: Tailwind CSS
+- **Design Reference**: [Hugo Theme Stack](https://github.com/CaiJimmy/hugo-theme-stack)
 
 ## Tech Stack
-- SvelteKit
-- Vite
-- TypeScript
-- NPM
-
-## Project Structure
-- `src/routes`: SvelteKit routes.
-- `src/lib`: Shared components and utilities.
-- `static`: Static assets.
+- **Framework**: SvelteKit (Svelte 5)
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Data Parsing**: js-yaml (for menu configuration)
+- **Package Manager**: npm
 
 ## Conventions
-- Use `npm` for package management.
-- Prefer TypeScript interfaces for props.
-- Follow Svelte 5 snippets and runes syntax where applicable.
+- **Syntax**: Use Svelte 5 runes (`$props`, `$state`, etc.) and snippets.
+- **Styling**: Use utility classes (Tailwind CSS). Avoid `style` tags unless necessary for dynamic values.
+- **Icons**: SVG strings embedded directly or via helper components (currently embedded strings in data).
+- **Data**: 
+    - Configuration files (menus) located in `src/lib/data`.
+    - Components located in `src/lib/components`.
 
-## Automatic Updates
-This file and `CHANGE.md` can be updated using the project's maintenance scripts.
+## Current Project Structure
+
+├── CHANGE.md
+├── GEMINI.md
+├── README.md
+├── package-lock.json
+├── package.json
+├── svelte.config.js
+├── tailwind.config.ts (or via vite plugin)
+├── tsconfig.json
+├── vite.config.ts
+├── src
+│   ├── app.d.ts
+│   ├── app.html
+│   ├── app.css (or layout.css)
+│   ├── lib
+│   │   ├── components
+│   │   │   ├── PostCard.svelte
+│   │   │   ├── RightSidebar.svelte
+│   │   │   └── Sidebar.svelte
+│   │   └── data
+│   │       └── menu.yaml
+│   └── routes
+│       ├── +layout.server.ts
+│       ├── +layout.svelte
+│       ├── +page.svelte
+│       ├── layout.css
+│       ├── about
+│       │   └── +page.svelte
+│       ├── archives
+│       │   └── +page.svelte
+│       ├── post
+│       │   └── [slug]
+│       │       └── +page.svelte
+│       └── search
+│           └── +page.svelte
+└── static
+    └── robots.txt
