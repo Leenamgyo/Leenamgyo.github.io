@@ -4,7 +4,7 @@
   let { data } = $props();
 </script>
 
-<div class="max-w-4xl mx-auto space-y-12">
+<div class="max-w-5xl mx-auto space-y-12">
   <div class="flex items-center justify-between mb-8">
     <h1 class="text-3xl font-bold text-zinc-900 dark:text-white">All Posts</h1>
     <div class="text-sm text-zinc-500">{data.posts.length} articles</div>
@@ -16,8 +16,8 @@
         title={post.title}
         description={post.description || ''}
         date={post.date}
-        category={post.category || 'General'}
         imageUrl={post.image}
+        href={`/posts/${post.slug}`}
       />
     {/each}
   </div>

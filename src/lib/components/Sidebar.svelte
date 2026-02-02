@@ -1,11 +1,13 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { icons } from '$lib/data/icons';
 
   interface MenuItem {
     name: string;
     url: string;
     icon: string;
   }
+
 
   interface SocialLink {
     name: string;
@@ -23,7 +25,6 @@
 
   function isActive(url: string, currentPath: string) {
     if (url === '/') return currentPath === '/';
-    if (url === '/posts') return currentPath === '/posts' || currentPath.startsWith('/post/');
     return currentPath === url || currentPath.startsWith(url + '/');
   }
 
@@ -38,7 +39,7 @@
   }
 </script>
 
-<aside class="w-full lg:w-56 flex-shrink-0 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto bg-transparent p-4 flex flex-col justify-between transition-colors duration-300">
+<aside class="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto bg-transparent p-4 flex flex-col justify-between transition-colors duration-300">
   <div>
     <!-- Profile -->
     <div class="mb-10">
@@ -60,7 +61,7 @@
           class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors {isActive(item.url, $page.url.pathname) ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-medium' : 'text-sm'}"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            {@html item.icon}
+            {@html icons[item.icon] || ''}
           </svg>
           <span class="text-[13px]">{item.name}</span>
         </a>
@@ -75,7 +76,7 @@
         {#each social as link}
           <a href={link.url} class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" aria-label={link.name}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              {@html link.icon}
+              {@html icons[link.icon] || ''}
             </svg>
           </a>
         {/each}

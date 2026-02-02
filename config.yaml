@@ -1,0 +1,40 @@
+site:
+  title: "My Tech Blog"
+  description: "A blog about SvelteKit and Web Development"
+  author: "Jimmy Cai"
+
+menu:
+  main:
+    - name: Home
+      identifier: home
+      url: /
+      icon: home
+      weight: 1
+    - name: About
+      identifier: about
+      url: /about
+      icon: about
+      weight: 2
+    - name: Archives
+      identifier: archives
+      url: /archives
+      icon: archives
+      weight: 3
+    - name: Search
+      identifier: search
+      url: /search
+      icon: search
+      weight: 4
+
+  social:
+    - name: Github
+      url: https://github.com
+      icon: github
+    - name: Twitter
+      url: https://twitter.com
+      icon: twitter
+
+widgets:
+  home: [search, archives, tags]
+  posts: [toc]
+  default: [search, archives, tags]

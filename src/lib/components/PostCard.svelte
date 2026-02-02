@@ -3,14 +3,14 @@
     title: string;
     description: string;
     date: string;
-    category: string;
     imageUrl?: string;
+    href: string;
   }
 
-  let { title, description, date, category, imageUrl }: Props = $props();
+  let { title, description, date, imageUrl, href }: Props = $props();
 </script>
 
-<article class="bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-transparent hover:border-zinc-200 dark:hover:border-zinc-800 flex flex-col md:flex-row h-full group">
+<article class="bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-zinc-200 dark:hover:border-zinc-800 flex flex-col md:flex-row h-full group">
   {#if imageUrl}
     <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden">
       <img src={imageUrl} alt={title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -20,14 +20,9 @@
   
   <div class="p-6 md:p-8 flex flex-col flex-1 justify-between">
     <div>
-      <div class="flex items-center gap-2 mb-3">
-        <span class="px-2 py-1 text-xs font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-blue-900/30 rounded-md">
-          {category}
-        </span>
-      </div>
       
       <h2 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-        <a href="/">{title}</a>
+        <a href={href}>{title}</a>
       </h2>
       
       <p class="text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-3 mb-6">

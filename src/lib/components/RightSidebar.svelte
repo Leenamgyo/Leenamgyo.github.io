@@ -4,36 +4,26 @@
 
   interface Props {
     widgetsConfig: Record<string, string[]>;
+    tags?: { name: string, count: number }[];
+    archives?: { name: string, count: number }[];
   }
 
-  let { widgetsConfig }: Props = $props();
+  let { widgetsConfig, tags = [], archives = [] }: Props = $props();
 
   // Determine current page type for widget selection
   let pageType = $derived.by(() => {
     const path = $page.url.pathname;
     if (path === '/') return 'home';
     if (path === '/posts') return 'posts';
-    if (path.startsWith('/post/')) return 'post';
+    if (path.startsWith('/post/') || path.startsWith('/posts/')) return 'post';
     return 'default';
   });
 
   let activeWidgets = $derived(widgetsConfig[pageType] || widgetsConfig['default'] || []);
-
-  // Dummy data for widgets
-  const archives = [
-    { name: 'February 2026', count: 4 },
-    { name: 'January 2026', count: 12 },
-    { name: 'December 2025', count: 8 },
-    { name: 'November 2025', count: 5 }
-  ];
-
-  const tags = [
-    'SvelteKit', 'Tailwind', 'TypeScript', 'Web Dev', 
-    'Tutorial', 'Design', 'Coding', 'Opinion', 'React', 'Vue'
-  ];
 </script>
 
-<aside class="w-full xl:w-56 p-4 xl:py-8 xl:px-0 space-y-6 xl:sticky xl:top-0 xl:h-screen xl:overflow-y-auto hidden md:block">
+{#if activeWidgets.length > 0}
+<aside class="w-full xl:w-72 p-4 xl:py-8 xl:px-0 space-y-6 xl:sticky xl:top-0 xl:h-screen xl:overflow-y-auto hidden md:block">
   {#each activeWidgets as widget}
     {#if widget === 'search'}
       <!-- Search Widget -->
@@ -73,10 +63,10 @@
         <div class="flex flex-wrap gap-2">
           {#each tags as tag}
             <a 
-              href="/tags/{tag.toLowerCase()}" 
+              href="/tags/{tag.name.toLowerCase()}" 
               class="px-2.5 py-1 rounded-lg text-[10px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              #{tag}
+              #{tag.name}
             </a>
           {/each}
         </div>
@@ -86,3 +76,4 @@
     {/if}
   {/each}
 </aside>
+{/if}

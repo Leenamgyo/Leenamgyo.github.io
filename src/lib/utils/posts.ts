@@ -3,12 +3,12 @@ export interface Post {
     title: string;
     date: string;
     description?: string;
-    category?: string;
     image?: string;
+    tags?: string[];
 }
 
 export const getPosts = async () => {
-    const allPostFiles = import.meta.glob('../../../content/posts/*.md', { eager: true });
+    const allPostFiles = import.meta.glob('/content/posts/*.md', { eager: true });
     const posts: Post[] = [];
 
     for (const path in allPostFiles) {
