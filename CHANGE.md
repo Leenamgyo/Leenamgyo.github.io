@@ -3,25 +3,17 @@
 ## [Unreleased]
 
 ### Added
-- **Theme Port**: Replicated the core visual design of the [Hugo Stack Theme](https://github.com/CaiJimmy/hugo-theme-stack) in SvelteKit.
-- **Layout**: Implemented a responsive 3-column layout (Left Sidebar, Main Content, Right Sidebar) with sticky positioning for sidebars on large screens.
-- **Dark Mode**: Full dark mode support with system preference detection and localStorage persistence. Includes a toggle in the left sidebar.
-- **Sidebars**: 
-    - Left: Profile, Navigation, Social Links, Dark Mode toggle.
-    - Right: Search widget, Archives widget, Tags widget (visible on XL screens).
-- **Navigation**:
-    - Centralized menu configuration using YAML (`src/lib/data/menu.yaml`).
-    - Server-side parsing of menu data via `+layout.server.ts`.
-- **Pages**:
-    - `src/routes/about`: "About Me" page.
-    - `src/routes/archives`: Chronological archive list.
-    - `src/routes/search`: Search interface.
-    - `src/routes/post/[slug]`: Dynamic blog post routing structure.
-- **Typography**: Refined fonts (Inter) with specific weights and spacing for a minimalist aesthetic.
+- **Markdown-Driven Content**: Integrated `mdsvex` to handle blog posts and static pages via Markdown files in the `content/` directory.
+- **Dynamic Post Routing**: Implemented universal load functions to dynamically import and render posts based on URL slugs.
+- **Dynamic Archives**: The archives page now automatically reads post metadata (date, title) from Markdown files and groups them by year.
+- **Post Utilities**: Created `src/lib/utils/posts.ts` for centralized post fetching and sorting.
+- **Korean Content**: Added a sample post in Korean about Svelte and Svelte 5 Runes.
 
 ### Changed
-- **Styling**: Migrated to a complete Tailwind CSS implementation with custom styling for cards and layouts.
-- **Project Structure**: Organized components into `src/lib/components` and data into `src/lib/data`.
+- **Layout Refinement**: Reduced the overall application width to `1024px` (approx. 80% of previous size) for better readability.
+- **Visual Impact**: Increased single post cover image height to `500px` on desktop.
+- **Sidebar Typography**: Further refined sidebar font sizes and weights for a minimalist aesthetic.
+- **Project Structure**: Centralized all content (About, Archives, Search, Posts) into the root `/content` directory.
 
 ### Fixed
-- **Responsiveness**: Adjusted margins and hiding/showing of sidebars based on breakpoints (md, lg, xl).
+- **FOUC Prevention**: Improved dark mode initialization script in `app.html`.

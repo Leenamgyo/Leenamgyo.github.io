@@ -16,9 +16,16 @@
   interface Props {
     menu: MenuItem[];
     social: SocialLink[];
+    site?: { title: string, author: string };
   }
 
-  let { menu, social }: Props = $props();
+  let { menu, social, site }: Props = $props();
+
+  function isActive(url: string, currentPath: string) {
+    if (url === '/') return currentPath === '/';
+    if (url === '/posts') return currentPath === '/posts' || currentPath.startsWith('/post/');
+    return currentPath === url || currentPath.startsWith(url + '/');
+  }
 
   function toggleDarkMode() {
     if (document.documentElement.classList.contains('dark')) {
@@ -34,14 +41,14 @@
 <aside class="w-full lg:w-56 flex-shrink-0 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto bg-transparent p-4 flex flex-col justify-between transition-colors duration-300">
   <div>
     <!-- Profile -->
-    <div class="mb-8">
-      <div class="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-700 mb-4 overflow-hidden relative group">
+    <div class="mb-10">
+      <div class="w-28 h-28 rounded-full bg-zinc-200 dark:bg-zinc-700 mb-6 overflow-hidden relative group shadow-lg">
         <!-- Placeholder Avatar -->
-        <img src="https://ui-avatars.com/api/?name=Ji&background=random&size=128" alt="Avatar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <img src="https://ui-avatars.com/api/?name=Ji&background=random&size=256" alt="Avatar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
       </div>
-      <h1 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-1 tracking-tight">Jimmy Cai</h1>
+      <h1 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-1 tracking-tight">{site?.author || 'Jimmy Cai'}</h1>
       <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed font-light">
-        Card-style Hugo theme designed for bloggers.
+        {site?.title || 'Card-style Hugo theme designed for bloggers.'}
       </p>
     </div>
 
@@ -50,7 +57,7 @@
       {#each menu as item}
         <a 
           href={item.url} 
-          class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors {$page.url.pathname === item.url ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-medium' : 'text-sm'}"
+          class="flex items-center gap-3 px-2.5 py-2 rounded-xl text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors {isActive(item.url, $page.url.pathname) ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-medium' : 'text-sm'}"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             {@html item.icon}
