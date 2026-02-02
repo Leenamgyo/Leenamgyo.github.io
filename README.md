@@ -1,42 +1,44 @@
-# sv
+# Blog Project
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is a personal blog project built with [SvelteKit](https://kit.svelte.dev/).
 
-## Creating a project
+## Getting Started
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- npm
 
-```sh
-# create a new project
-npx sv create my-app
+### Installation
+
+```bash
+npm install
 ```
 
-To recreate this project with the same configuration:
+### Development
 
-```sh`
-# recreate this project
-npx sv create --template minimal --types ts --no-install .
-```
+Start the development server:
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+### Building
 
-To create a production version of your app:
+Build for production:
 
-```sh
+```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+## Documentation
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- `GEMINI.md`: Context for AI assistants.
+- `CHANGE.md`: Changelog for the project.
+
+## Maintenance
+
+To automatically update `CHANGE.md` and project context:
+
+```bash
+npm run update-docs
+```
