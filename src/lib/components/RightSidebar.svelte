@@ -23,19 +23,18 @@
 </script>
 
 {#if activeWidgets.length > 0}
-<aside class="w-full xl:w-72 p-4 xl:py-8 xl:px-0 space-y-6 xl:sticky xl:top-0 xl:h-screen xl:overflow-y-auto hidden md:block">
+<aside>
   {#each activeWidgets as widget}
     {#if widget === 'search'}
       <!-- Search Widget -->
-      <div class="bg-white dark:bg-zinc-900 rounded-2xl p-4 shadow-sm border border-zinc-100 dark:border-zinc-800">
-        <h3 class="text-[10px] font-semibold text-zinc-400 uppercase tracking-[0.15em] mb-4">Search</h3>
-        <div class="relative">
+      <div>
+        <h3>Search</h3>
+        <div>
           <input 
             type="text" 
             placeholder="Type to search..." 
-            class="w-full bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-xl py-2.5 pl-9 pr-4 text-[11px] focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all placeholder:text-zinc-400 font-light"
           />
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
@@ -43,14 +42,14 @@
       </div>
     {:else if widget === 'archives'}
       <!-- Archives Widget -->
-      <div class="bg-white dark:bg-zinc-900 rounded-2xl p-4 shadow-sm border border-zinc-100 dark:border-zinc-800">
-        <h3 class="text-[10px] font-semibold text-zinc-400 uppercase tracking-[0.15em] mb-4">Archives</h3>
-        <ul class="space-y-2.5">
+      <div>
+        <h3>Archives</h3>
+        <ul>
           {#each archives as archive}
             <li>
-              <a href="/archives" class="flex items-center justify-between group text-[11px]">
-                <span class="text-zinc-600 dark:text-zinc-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-medium">{archive.name}</span>
-                <span class="px-1.5 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 text-[9px] text-zinc-400 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-light tracking-tighter">{archive.count}</span>
+              <a href="/archives">
+                <span>{archive.name}</span>
+                <span>{archive.count}</span>
               </a>
             </li>
           {/each}
@@ -58,14 +57,11 @@
       </div>
     {:else if widget === 'tags'}
       <!-- Tags Widget -->
-      <div class="bg-white dark:bg-zinc-900 rounded-2xl p-4 shadow-sm border border-zinc-100 dark:border-zinc-800">
-        <h3 class="text-[10px] font-semibold text-zinc-400 uppercase tracking-[0.15em] mb-4">Tags</h3>
-        <div class="flex flex-wrap gap-2">
+      <div>
+        <h3>Tags</h3>
+        <div>
           {#each tags as tag}
-            <a 
-              href="/tags/{tag.name.toLowerCase()}" 
-              class="px-2.5 py-1 rounded-lg text-[10px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
+            <a href="/tags/{tag.name.toLowerCase()}">
               #{tag.name}
             </a>
           {/each}
