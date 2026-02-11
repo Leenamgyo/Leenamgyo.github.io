@@ -19,20 +19,20 @@ export const load = async ({ params }) => {
   if (meta.layout === 'archives') {
     const posts = await getPosts();
     const archives = posts.reduce((acc, p) => {
-        const year = new Date(p.date).getFullYear();
-        if (!acc[year]) acc[year] = [];
-        acc[year].push(p);
-        return acc;
+      const year = new Date(p.date).getFullYear();
+      if (!acc[year]) acc[year] = [];
+      acc[year].push(p);
+      return acc;
     }, {} as Record<number, typeof posts>);
 
     const sortedArchives = Object.entries(archives)
-        .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
-        .map(([year, groupPosts]) => ({
-            year: Number(year),
-            posts: groupPosts
-        }));
-    
-    extraData = { archives: sortedArchives };
+      .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+      .map(([year, groupPosts]) => ({
+        year: Number(year),
+        posts: groupPosts
+      }));
+
+    extraData = { archiveGroups: sortedArchives };
   }
 
   return {
