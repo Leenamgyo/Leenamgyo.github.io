@@ -39,4 +39,5 @@ widgets:
   home: [search, archives, tags]
   posts: [search, archives, tags] # List of posts
   post: [toc] # Single post
+  about: [] # No widgets for About page
   default: [search, archives, tags]
