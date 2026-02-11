@@ -18,7 +18,7 @@ A minimalist, high-performance blog application built with SvelteKit and Tailwin
 
 ## Usage
 
-1. **Install**: `npm install`
+1. **Install**: `npm install` (This will install all project dependencies, including Vite.)
 2. **Dev**: `npm run dev`
 3. **Build**: `npm run build`
 

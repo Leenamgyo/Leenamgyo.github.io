@@ -1,1 +1,139 @@
-/* CSS reset */
+@import "tailwindcss";
+
+:root {
+    --card-border-radius: 1rem;
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --main-width: 100%;
+    --sidebar-gap: 2rem;
+}
+
+/* Base Container */
+.container.extended {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 100%;
+}
+
+/* Card Style Utility */
+.card-style {
+    background-color: white;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+:global(.dark) .card-style {
+    background-color: #1f2937;
+    /* gray-800 */
+    box-shadow: none;
+    border: 1px solid #374151;
+    /* gray-700 */
+}
+
+/* Layout Structure */
+.layout-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sidebar-gap);
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    /* Prevent flex overflow */
+}
+
+/* Sidebars Base */
+.left-sidebar,
+.right-sidebar {
+    width: 100%;
+}
+
+/* Responsive: Tablet & Up (>= 1024px for this specific 3-col design, or 768px for 2-col) */
+/* We'll follow a strategy: Mobile (1 col) -> Tablet (2 col: Left + Main) -> Desktop (3 col) */
+
+@media (min-width: 1024px) {
+    .container.extended {
+        max-width: 1024px;
+    }
+
+    .layout-grid {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .left-sidebar {
+        width: 240px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 2.5rem;
+        max-height: calc(100vh - 5rem);
+        overflow-y: auto;
+        /* Hide scrollbar for cleaner look */
+        scrollbar-width: none;
+    }
+
+    .left-sidebar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .right-sidebar {
+        /* On tablet/small desktop, right sidebar might wrap or hide. 
+           For this specific "Stack" theme look, let's keep it 2-column on 1024px 
+           if we want, OR jump straight to 3-column if space permits.
+           Let's assume 1024px is enough for 3 columns slightly compacted, 
+           or 2 columns + stacked right sidebar. 
+           
+           Let's go with: 1024px = 2 Column (Left + Main), Right sidebar stays at bottom or hidden?
+           Actually, Stack theme usually does 2 columns on tablets.
+        */
+        display: none;
+        /* Hide by default on smaller desktops/tablets if we stick to 2-col */
+    }
+
+    /* We need a larger breakpoint for 3 columns */
+}
+
+@media (min-width: 1280px) {
+    .container.extended {
+        max-width: 1280px;
+    }
+
+    .left-sidebar {
+        width: 280px;
+    }
+
+    .right-sidebar {
+        display: block;
+        width: 280px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 2.5rem;
+        max-height: calc(100vh - 5rem);
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    .right-sidebar::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container.extended {
+        max-width: 1536px;
+    }
+
+    .left-sidebar {
+        width: 320px;
+    }
+
+    .right-sidebar {
+        width: 320px;
+    }
+}

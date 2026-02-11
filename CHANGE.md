@@ -1,19 +1,16 @@
-# Changelog
+# Change Log
 
-## [Unreleased]
+All notable changes to this project will be documented in this file.
 
-### Added
-- **Markdown-Driven Content**: Integrated `mdsvex` to handle blog posts and static pages via Markdown files in the `content/` directory.
-- **Dynamic Post Routing**: Implemented universal load functions to dynamically import and render posts based on URL slugs.
-- **Dynamic Archives**: The archives page now automatically reads post metadata (date, title) from Markdown files and groups them by year.
-- **Post Utilities**: Created `src/lib/utils/posts.ts` for centralized post fetching and sorting.
-- **Korean Content**: Added a sample post in Korean about Svelte and Svelte 5 Runes.
+## [2026-02-09]
+- **Layout**: Implemented basic skeleton layout with responsive sidebars.
+- **Styling**: Added `layout.css` with container and sidebar width variables.
+- **Components**: Applied Tailwind CSS styling to `Sidebar`, `RightSidebar`, and `PostCard` to match Hugo Theme Stack aesthetic.
 
-### Changed
-- **Layout Refinement**: Reduced the overall application width to `1024px` (approx. 80% of previous size) for better readability.
-- **Visual Impact**: Increased single post cover image height to `500px` on desktop.
-- **Sidebar Typography**: Further refined sidebar font sizes and weights for a minimalist aesthetic.
-- **Project Structure**: Centralized all content (About, Archives, Search, Posts) into the root `/content` directory.
-
-### Fixed
-- **FOUC Prevention**: Improved dark mode initialization script in `app.html`.
+## Recent History
+- css 초기화 (87e94f6) - 2026-02-09
+- 수정 (2f0e34f) - 2026-02-02
+- 업데이트 (adb2b0f) - 2026-02-02
+- 스벨트 기반 블로그 (c5b758d) - 2026-02-02
+- init (711b2cf) - 2026-02-02
+- init (1e62be6) - 2026-02-02
