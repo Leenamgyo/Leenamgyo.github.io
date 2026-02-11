@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import { icons } from "$lib/data/icons";
+  import { onMount } from "svelte";
 
   interface MenuItem {
     name: string;
@@ -21,20 +22,36 @@
   }
 
   let { menu, social, site }: Props = $props();
+  let isDark = $state(false);
+
+  onMount(() => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      isDark = true;
+      document.documentElement.classList.add("dark");
+    } else {
+      isDark = false;
+      document.documentElement.classList.remove("dark");
+    }
+  });
+
+  function toggleDarkMode() {
+    isDark = !isDark;
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    }
+  }
 
   function isActive(url: string, currentPath: string) {
     if (url === "/") return currentPath === "/";
     return currentPath === url || currentPath.startsWith(url + "/");
-  }
-
-  function toggleDarkMode() {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    }
   }
 </script>
 
@@ -89,9 +106,25 @@
 
     <!-- Footer / Social -->
     <div
-      class="w-full pt-8 mt-auto border-t border-gray-100 dark:border-gray-700"
+      class="w-full pt-8 mt-auto border-t border-gray-100 dark:border-gray-700 flex flex-col items-center gap-6"
     >
-      <div class="flex justify-center gap-4 mb-6">
+      <!-- Dark Mode Toggle -->
+      <div class="flex items-center gap-3">
+        <span class="text-sm text-gray-500 dark:text-gray-400">Dark Mode</span>
+        <button
+          onclick={toggleDarkMode}
+          aria-label="Toggle Dark Mode"
+          class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+            {isDark ? 'bg-blue-600' : 'bg-gray-200'}"
+        >
+          <span
+            class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform
+              {isDark ? 'translate-x-6' : 'translate-x-1'}"
+          ></span>
+        </button>
+      </div>
+
+      <div class="flex justify-center gap-4">
         {#each social as link}
           <a
             href={link.url}
@@ -113,27 +146,6 @@
             </svg>
           </a>
         {/each}
-
-        <!-- Dark Mode Toggle -->
-        <button
-          onclick={toggleDarkMode}
-          aria-label="Toggle Dark Mode"
-          class="text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
       </div>
 
       <div class="text-xs text-gray-400">

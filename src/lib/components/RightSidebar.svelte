@@ -30,7 +30,9 @@
     {#each activeWidgets as widget}
       {#if widget === "search"}
         <!-- Search Widget -->
-        <div class="card-style mb-4 p-6">
+        <div
+          class="card-style mb-6 p-6 transition-all hover:shadow-lg dark:hover:border-gray-600"
+        >
           <h3
             class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4"
           >
@@ -61,7 +63,9 @@
         </div>
       {:else if widget === "archives"}
         <!-- Archives Widget -->
-        <div class="card-style mb-4 p-6">
+        <div
+          class="card-style mb-6 p-6 transition-all hover:shadow-lg dark:hover:border-gray-600"
+        >
           <h3
             class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4"
           >
@@ -86,7 +90,9 @@
         </div>
       {:else if widget === "tags"}
         <!-- Tags Widget -->
-        <div class="card-style mb-4 p-6">
+        <div
+          class="card-style mb-6 p-6 transition-all hover:shadow-lg dark:hover:border-gray-600"
+        >
           <h3
             class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4"
           >
@@ -104,7 +110,7 @@
           </div>
         </div>
       {:else if widget === "toc"}
-        <div class="mb-4">
+        <div class="mb-6">
           <TableOfContents />
         </div>
       {/if}
