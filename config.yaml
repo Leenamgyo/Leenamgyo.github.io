@@ -2,6 +2,7 @@ site:
   title: "My Tech Blog"
   description: "A blog about SvelteKit and Web Development"
   author: "Jimmy Cai"
+  avatar: "" # Optional: Path to avatar image (e.g., /images/avatar.jpg)
 
 menu:
   main:
@@ -36,5 +37,6 @@ menu:
 
 widgets:
   home: [search, archives, tags]
-  posts: [toc]
+  posts: [search, archives, tags] # List of posts
+  post: [toc] # Single post
   default: [search, archives, tags]
