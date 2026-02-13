@@ -11,15 +11,11 @@
 </script>
 
 <article
-  class="card-style mb-6 flex flex-col md:flex-row overflow-hidden hover:shadow-lg transition-shadow duration-300"
+  class="card-style mb-6 flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300"
 >
   {#if imageUrl}
-    <div class="md:w-1/3 h-48 md:h-auto relative">
-      <img
-        src={imageUrl}
-        alt={title}
-        class="w-full h-full object-cover absolute inset-0"
-      />
+    <div class="w-full h-52 relative">
+      <img src={imageUrl} alt={title} class="w-full h-full object-cover" />
     </div>
   {/if}
 

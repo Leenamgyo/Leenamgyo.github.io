@@ -2,6 +2,7 @@
 title: "Test Post 1"
 date: "2026-02-10"
 description: "This is the first test post to verify the blog system."
+image: "/post1_cover.png"
 tags:
   - test
   - blog

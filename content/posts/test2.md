@@ -2,6 +2,7 @@
 title: "Test Post 2"
 date: "2026-02-11"
 description: "A second test post with more content and examples."
+image: "/post2_cover.png"
 tags:
   - test
   - sveltekit
