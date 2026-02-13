@@ -2,7 +2,7 @@
 	import favicon from "$lib/assets/favicon.svg";
 	import Sidebar from "$lib/components/Sidebar.svelte";
 	import RightSidebar from "$lib/components/RightSidebar.svelte";
-	import "./layout.css";
+	import "$lib/styles/app.css";
 
 	let { children, data } = $props();
 </script>
