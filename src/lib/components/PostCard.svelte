@@ -10,7 +10,6 @@
   let { title, description, date, imageUrl, href }: Props = $props();
 </script>
 
-ㅈ
 <article
   class="card-style mb-6 flex flex-col md:flex-row overflow-hidden hover:shadow-lg transition-shadow duration-300"
 >

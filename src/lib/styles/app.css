@@ -1,10 +1,31 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
     --card-border-radius: 1rem;
     --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --main-width: 100%;
     --sidebar-gap: 2rem;
+
+    /* Default (Light) Theme */
+    --bg-body: #f3f4f6;
+    /* gray-100 */
+    --text-body: #1f2937;
+    /* gray-800 */
+}
+
+:root.dark {
+    /* Dark Theme - Slate palette */
+    --bg-body: #0f172a;
+    /* slate-900 */
+    --text-body: #f1f5f9;
+    /* slate-100 */
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-body);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Base Container */
@@ -22,14 +43,15 @@
     border-radius: var(--card-border-radius);
     box-shadow: var(--card-shadow);
     overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-:global(.dark) .card-style {
-    background-color: #1f2937;
-    /* gray-800 */
+.dark .card-style {
+    background-color: #1e293b;
+    /* slate-800 */
     box-shadow: none;
-    border: 1px solid #374151;
-    /* gray-700 */
+    border: 1px solid #334155;
+    /* slate-700 */
 }
 
 /* Layout Structure */
