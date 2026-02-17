@@ -13,7 +13,10 @@ const config = {
 			fallback: '404.html',
 			precompress: false,
 			strict: true
-		})
+		}),
+		prerender: {
+			handleHttpError: 'warn'
+		}
 		// 루트 도메인을 사용하므로 paths 설정은 완전히 제거합니다.
 	}
 };

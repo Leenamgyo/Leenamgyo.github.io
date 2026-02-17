@@ -4,6 +4,8 @@ import path from 'path';
 
 import { getPosts } from '$lib/utils/posts';
 
+export const prerender = true;
+
 export const load = async () => {
   try {
     const configPath = path.resolve('config.yaml');
