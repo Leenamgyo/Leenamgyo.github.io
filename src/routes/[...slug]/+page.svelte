@@ -4,5 +4,10 @@
 </script>
 
 <div class="card-style p-6">
-    <Component />
+    <article class="prose">
+        {#if data.metadata?.title}
+            <h1>{data.metadata.title}</h1>
+        {/if}
+        <Component />
+    </article>
 </div>

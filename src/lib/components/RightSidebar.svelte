@@ -14,8 +14,8 @@
   let pageType = $derived.by(() => {
     const path = $page.url.pathname;
     if (path === "/") return "home";
-    // if (path === "/about") return "about";
-    // if (path === "/posts") return "posts";
+    if (path === "/about") return "about";
+    if (path === "/posts") return "posts";
     if (path.startsWith("/post/") || path.startsWith("/posts/")) return "post";
     return "default";
   });

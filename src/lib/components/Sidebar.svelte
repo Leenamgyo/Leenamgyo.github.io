@@ -56,19 +56,19 @@
 </script>
 
 <aside class="h-full">
-  <div class="card-style p-8 h-full flex flex-col items-center text-center">
+  <div class="card-style p-5 h-full flex flex-col items-center text-center">
     <!-- Profile -->
-    <div class="mb-8">
-      <div class="mb-6 relative">
+    <div class="mb-5">
+      <div class="mb-4 relative">
         <!-- Placeholder Avatar -->
         <img
           src={site?.avatar ||
             `https://ui-avatars.com/api/?name=${site?.author || "Avatar"}&background=random&size=256`}
           alt={site?.author || "Avatar"}
-          class="rounded-full w-32 h-32 mx-auto shadow-lg"
+          class="rounded-full w-24 h-24 mx-auto shadow-lg"
         />
       </div>
-      <h1 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
+      <h1 class="text-lg font-bold text-gray-800 dark:text-white mb-1">
         {site?.author || "Jimmy Cai"}
       </h1>
       <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -81,15 +81,15 @@
       {#each menu as item}
         <a
           href={item.url}
-          class="flex items-center gap-3 px-4 py-3 mb-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors
+          class="flex items-center gap-2.5 px-3 py-2.5 mb-1 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors
                   {isActive(item.url, $page.url.pathname)
             ? 'bg-blue-50 text-blue-600 dark:bg-gray-700 dark:text-blue-400 font-medium'
             : ''}"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -106,7 +106,7 @@
 
     <!-- Footer / Social -->
     <div
-      class="w-full pt-8 mt-auto border-t border-gray-100 dark:border-gray-700 flex flex-col items-center gap-6"
+      class="w-full pt-5 mt-auto border-t border-gray-100 dark:border-gray-700 flex flex-col items-center gap-4"
     >
       <!-- Dark Mode Toggle -->
       <div class="flex items-center gap-3">

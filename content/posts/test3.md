@@ -7,6 +7,4 @@ tags:
   - darkmode
 ---
 
-# Test Post 3
-
 This is the third and newest test post. It helps verify dark mode styling on post cards.
