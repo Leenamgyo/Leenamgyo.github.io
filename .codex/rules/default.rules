@@ -1,0 +1,11 @@
+prefix_rule(
+    pattern = ["git"],
+    decision = "allow",
+    justification = "Allow git commands without approval.",
+)
+
+prefix_rule(
+    pattern = ["gh"],
+    decision = "allow",
+    justification = "Allow GitHub CLI commands without approval.",
+)
