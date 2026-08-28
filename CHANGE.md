@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
 - 프로젝트 구조, 작성 규칙과 검증 컨텍스트를 독립 문서로 관리합니다.
 - 작업별 변경 사항을 `CHANGE.md`에 일관된 형식으로 기록하는 규칙을 추가합니다.
 
+### Changed
+
+- 새로운 독립 작업 요청마다 별도의 feat 브랜치와 PR을 사용하고, 미병합 작업에 의존할 때는 stacked PR로 분리합니다.
+
 ## [2026-02-09]
 - **Layout**: Implemented basic skeleton layout with responsive sidebars.
 - **Styling**: Added `layout.css` with container and sidebar width variables.
