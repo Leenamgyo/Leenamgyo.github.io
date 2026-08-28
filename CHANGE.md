@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - 프로젝트 구조, 작성 규칙과 검증 컨텍스트를 독립 문서로 관리합니다.
 - 작업별 변경 사항을 `CHANGE.md`에 일관된 형식으로 기록하는 규칙을 추가합니다.
 - 행과 열을 동적으로 추가하거나 삭제하는 테이블 예제 게시글을 추가합니다.
+- 저장소별 Codex 승인 정책과 Git/GitHub CLI 허용 규칙을 프로젝트 내부에서 관리합니다.
 
 ### Changed
 
