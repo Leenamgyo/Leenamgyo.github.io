@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - 행과 열을 동적으로 추가하거나 삭제하는 테이블 예제 게시글을 추가합니다.
 - 저장소별 Codex 승인 정책과 Git/GitHub CLI 허용 규칙을 프로젝트 내부에서 관리합니다.
 - UUID 파일명을 사용하는 새 게시글 초안과 버전별 게시글 템플릿을 추가합니다.
+- 전체 게시글 관계를 검색하고 탐색하는 반응형 그래프를 독립 `/graph` 화면으로 제공합니다.
 
 ### Changed
 
