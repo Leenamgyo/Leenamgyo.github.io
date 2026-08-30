@@ -5,6 +5,7 @@ export interface Post {
     description?: string;
     image?: string;
     tags?: string[];
+    draft?: boolean;
 }
 
 export const getPosts = async () => {
@@ -17,6 +18,9 @@ export const getPosts = async () => {
         
         if (file && typeof file === 'object' && 'metadata' in file && slug) {
             const metadata = file.metadata as Omit<Post, 'slug'>;
+
+            if (metadata.draft) continue;
+
             posts.push({
                 ...metadata,
                 slug
