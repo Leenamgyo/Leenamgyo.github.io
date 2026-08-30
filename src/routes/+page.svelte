@@ -6,7 +6,7 @@
 </script>
 
 {#if data.posts.length > 0}
-    <PostGraph posts={data.posts} />
+    <PostGraph posts={data.graphPosts} />
 
     {#each data.posts as post}
         <PostCard
