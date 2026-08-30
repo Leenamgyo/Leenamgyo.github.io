@@ -1,10 +1,13 @@
 <script lang="ts">
     import PostCard from "$lib/components/PostCard.svelte";
+    import PostGraph from "$lib/components/PostGraph.svelte";
 
     let { data } = $props();
 </script>
 
 {#if data.posts.length > 0}
+    <PostGraph posts={data.posts} />
+
     {#each data.posts as post}
         <PostCard
             title={post.title || "Untitled"}

@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - 작업별 변경 사항을 `CHANGE.md`에 일관된 형식으로 기록하는 규칙을 추가합니다.
 - 행과 열을 동적으로 추가하거나 삭제하는 테이블 예제 게시글을 추가합니다.
 - 저장소별 Codex 승인 정책과 Git/GitHub CLI 허용 규칙을 프로젝트 내부에서 관리합니다.
+- 기본 화면에 공통 태그로 게시글 관계를 보여주는 클릭 가능한 그래프 뷰를 추가합니다.
 
 ### Changed
 
@@ -18,6 +19,7 @@ All notable changes to this project will be documented in this file.
 - 프로젝트 README를 실제 기술 스택, 글 작성법과 배포 절차에 맞게 갱신합니다.
 - 게시글 이미지가 GitHub Pages에서 표시되도록 정적 에셋 경로를 루트 상대 URL로 변경합니다.
 - 중복된 Gemini 전용 프로젝트 컨텍스트를 공용 에이전트 컨텍스트 문서로 통합합니다.
+- 기본 화면의 게시글 카드에서 본문을 소개하는 한 줄 요약을 표시합니다.
 
 ### Removed
 
