@@ -10,7 +10,6 @@
             title={post.title || "Untitled"}
             description={post.description || ""}
             date={post.date || ""}
-            imageUrl={post.image}
             href={`/posts/${post.slug}`}
         />
     {/each}
