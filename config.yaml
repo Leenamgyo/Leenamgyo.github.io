@@ -21,16 +21,11 @@ menu:
       url: /archives
       icon: archives
       weight: 3
-    - name: Graph
-      identifier: graph
-      url: /graph
-      icon: graph
-      weight: 4
     - name: Search
       identifier: search
       url: /search
       icon: search
-      weight: 5
+      weight: 4
 
   social:
     - name: Github
