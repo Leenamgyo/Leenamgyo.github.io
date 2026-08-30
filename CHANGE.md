@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - 테이블의 행과 열을 동적으로 조작하는 예제 게시글을 제거합니다.
+- 기본 화면의 게시글 카드에서 대표 이미지를 제거해 텍스트 중심으로 표시합니다.
 
 ## [2026-02-09]
 - **Layout**: Implemented basic skeleton layout with responsive sidebars.

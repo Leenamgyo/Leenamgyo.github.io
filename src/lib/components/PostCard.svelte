@@ -3,22 +3,15 @@
     title: string;
     description: string;
     date: string;
-    imageUrl?: string;
     href: string;
   }
 
-  let { title, description, date, imageUrl, href }: Props = $props();
+  let { title, description, date, href }: Props = $props();
 </script>
 
 <article
   class="card-style mb-6 flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300"
 >
-  {#if imageUrl}
-    <div class="w-full h-52 relative">
-      <img src={imageUrl} alt={title} class="w-full h-full object-cover" />
-    </div>
-  {/if}
-
   <div class="p-6 flex flex-col flex-1">
     <div class="mb-4 flex-1">
       <h2
