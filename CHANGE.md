@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
 - 행과 열을 동적으로 추가하거나 삭제하는 테이블 예제 게시글을 추가합니다.
 - 저장소별 Codex 승인 정책과 Git/GitHub CLI 허용 규칙을 프로젝트 내부에서 관리합니다.
 - UUID 파일명을 사용하는 새 게시글 초안과 버전별 게시글 템플릿을 추가합니다.
-- 전체 게시글 관계를 검색하고 탐색하는 반응형 그래프를 독립 `/graph` 화면으로 제공합니다.
+- 전체 게시글 관계를 검색하고 탐색하는 반응형 그래프를 재사용 가능한 홈 화면 컴포넌트로 제공합니다.
 
 ### Changed
 
@@ -21,6 +21,7 @@ All notable changes to this project will be documented in this file.
 - 게시글 이미지가 GitHub Pages에서 표시되도록 정적 에셋 경로를 루트 상대 URL로 변경합니다.
 - 중복된 Gemini 전용 프로젝트 컨텍스트를 공용 에이전트 컨텍스트 문서로 통합합니다.
 - `draft: true`인 작성 중 게시글을 홈과 게시글 목록에서 제외합니다.
+- 홈 상단에도 게시글 그래프를 표시하고 카드 요약을 보강해 게시글 목록의 정보 밀도를 높입니다.
 
 ### Removed
 
