@@ -19,6 +19,10 @@ All notable changes to this project will be documented in this file.
 - 게시글 이미지가 GitHub Pages에서 표시되도록 정적 에셋 경로를 루트 상대 URL로 변경합니다.
 - 중복된 Gemini 전용 프로젝트 컨텍스트를 공용 에이전트 컨텍스트 문서로 통합합니다.
 
+### Removed
+
+- 테이블의 행과 열을 동적으로 조작하는 예제 게시글을 제거합니다.
+
 ## [2026-02-09]
 - **Layout**: Implemented basic skeleton layout with responsive sidebars.
 - **Styling**: Added `layout.css` with container and sidebar width variables.
