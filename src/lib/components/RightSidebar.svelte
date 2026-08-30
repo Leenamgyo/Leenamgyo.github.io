@@ -75,7 +75,7 @@
             {#each archives as archive}
               <li>
                 <a
-                  href="/archives"
+                  href={`/archives#${archive.name}`}
                   class="flex justify-between items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   <span>{archive.name}</span>
@@ -101,7 +101,7 @@
           <div class="flex flex-wrap gap-2">
             {#each tags as tag}
               <a
-                href="/tags/{tag.name.toLowerCase()}"
+                href={`/tags/${encodeURIComponent(tag.name.toLowerCase())}`}
                 class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full text-sm transition-colors"
               >
                 #{tag.name}

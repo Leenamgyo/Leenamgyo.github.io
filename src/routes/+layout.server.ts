@@ -29,17 +29,19 @@ export const load = async () => {
     // Sort tags by count
     const tags = Array.from(tagsMap.entries()).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
 
-    // Calculate Archives (Month Year)
+    // Calculate Archives (Year)
     const archivesMap = new Map<string, number>();
     posts.forEach(post => {
       if (post.date) {
         const date = new Date(post.date);
-        const key = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        const key = String(date.getFullYear());
         const count = archivesMap.get(key) || 0;
         archivesMap.set(key, count + 1);
       }
     });
-    const archives = Array.from(archivesMap.entries()).map(([name, count]) => ({ name, count }));
+    const archives = Array.from(archivesMap.entries())
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => Number(b.name) - Number(a.name));
 
     return {
       site: data.site,
