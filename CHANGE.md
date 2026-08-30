@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 - 중복된 Gemini 전용 프로젝트 컨텍스트를 공용 에이전트 컨텍스트 문서로 통합합니다.
 - `draft: true`인 작성 중 게시글을 홈과 게시글 목록에서 제외합니다.
 - 홈 상단에도 게시글 그래프를 표시하고 카드 요약을 보강해 게시글 목록의 정보 밀도를 높입니다.
+- 아카이브를 연도별 게시물 목록으로 구성하고 각 태그 화면에서 해당 게시물만 표시합니다.
 
 ### Removed
 
